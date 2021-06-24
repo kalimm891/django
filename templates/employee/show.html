@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends 'accounts/base.html'%}
+    {% block content %}
+
+    <div class="container my-5">
+    <caption><center style="font-size: 20px;">List Of Employees</center></caption>
+    <table class="table table-bordered border-primary text-center mt-2">
+<thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">E-Mail</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for emp in employees %}
+    <tr>
+      <th scope="row">{{ emp.eid }}</th>
+      <td>{{emp.name }}</td>
+      <td>{{emp.age}}</td>
+      <td>{{ emp.email }}</td>
+      <td>{{ emp.mobile}}</td>
+      <td>{{ emp.salary }}</td>
+      <td><a href="{%url 'editEmp' emp.eid %}">Edit</a></td>
+      <td><a href="{%url 'deleteEmp' emp.eid %}">Delete</a></td>
+    </tr>
+    {%endfor%}
+  </tbody>
+      </table>
+    </div>
+  {% endblock %}
+</body>
+</html>

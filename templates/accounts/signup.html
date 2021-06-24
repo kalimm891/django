@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Signup Page</title>
+
+<style>
+ 
+.simple-login-container{
+    width:300px;
+    max-width:100%;
+    margin:50px auto;
+}
+.simple-login-container h2{
+    text-align:center;
+    font-size:20px;
+}
+
+.simple-login-container .btn-login{
+    background-color:#FF5964;
+    color:#fff;
+}
+a{
+    color:#fff;
+}
+</style>
+</head>
+<body>
+    {% extends 'accounts/base.html' %}
+   {% block content %}
+   <div class="simple-login-container">
+     <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+    <h2>SignUp Form</h2>
+        {% if error %}
+    <div class="text-center">
+        <p style="color: red;">{{ error }}</p>
+    </div>
+        {% endif %}
+       {% if msg %} 
+    <div class="text-center">
+        <p style="color: green;">{{ msg }}</p>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div class="col-md-12 form-group">
+          <input type="text" name="fname" class="form-control" placeholder="Enter First Name">
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 form-group">
+        <input type="text" name="lname" class="form-control" placeholder="Enter Last Name">
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12 form-group">
+      <input type="email" name="email" class="form-control"  placeholder="Enter Proper E-Mail">
+  </div>
+</div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="text" name="uname" class="form-control" placeholder="Enter Username">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="password" name="pwd" placeholder="Enter your Password" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="submit" class="btn btn-block btn-login" value="SignUp" >
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+          <p>Already have an account?<a href="signinpage">Login</a></p>
+        </div>
+    </div>
+  </form>
+</div>
+  {% endblock %}
+  </body>
+</html>
